@@ -1,2 +1,2 @@
-# personal_website
-things about me and my portofolio
+# Personal website
+things about me and my portofolio in the same place 
