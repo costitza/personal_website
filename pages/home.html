@@ -1,25 +1,44 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Ababei Raul</title>
-        <meta charset = "utf-8">
-        <meta name = "author" content = "Ababei Raul">
-        <meta name = "description" content = "personal website about me and my work">
-        <link rel = "stylesheet" href = "stylesheets\style-home.css">
-        <base href = "D:\FMI\personal_website">
-    </head>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Ababei Raul">
+    <meta name="description" content="Personal website about me and my work">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ababei Raul</title>
+    <link rel="stylesheet" href="stylesheets/style-home.css">
+</head>
 
-    <body>
-        <header>
-            Welcome to my personal website
-        </header>
-        <main>
-            <nav>
+<body>
+    <header class="site-header">
+        <div class="mainbox">
+            <h1 class="lastname" id = "lastname"></h1>
+            <h1 class="firstname" id = "firstname"></h1>
+        </div>
+    </header>
 
-            </nav>
-        </main>
-        <footer>
-            Contact: Raul :-)
-        </footer>
-    </body>
+    <section id="hero" class="hero">
+        <div class="hero-content">
+        <h2>Hello, I'm <span>Ababei Raul</span></h2>
+        <p>Web Developer | Designer | Creator</p>
+        <a href="#projects" class="btn">View My Work</a>
+        </div>
+    </section>
+
+    <main>
+        <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        </nav>
+    </main>
+
+    <footer>
+        Contact: Raul :-)
+    </footer>
+
+    <script src="scripts/header.js" defer></script>
+</body>
 </html>

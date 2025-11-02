@@ -1,0 +1,45 @@
+body{
+    display: flex;
+    margin: 0;
+    flex-direction: column;
+    background-color: aqua;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+.site-header {
+    height: 100vh;
+    background: linear-gradient(135deg, #000000, #271b36, #3b2954);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+header > .mainbox{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
+}
+
+.lastname, .firstname {
+    margin: 0;
+    font-weight: 800;
+    font-size: 15vw;
+    color: #b086b4;
+    text-shadow: 0 0 10px #010101, 0 0 20px #000000;
+}
+
+main{
+    flex: 0 15vw;
+}
+
+main > nav{
+    flex: 1;
+}
+
+header > .navbar{
+    display: flex;
+    flex-direction: row;
+}
