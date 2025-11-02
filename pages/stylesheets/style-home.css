@@ -9,11 +9,13 @@ body{
 
 .site-header {
     height: 100vh;
-    background: linear-gradient(135deg, #000000, #271b36, #3b2954);
+    background: linear-gradient(135deg, #000000, #243b6b, #3b2954);
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
+    position: relative;
+    padding-top: 2rem;
 }
 
 header > .mainbox{
@@ -25,9 +27,9 @@ header > .mainbox{
 
 .lastname, .firstname {
     margin: 0;
-    font-weight: 800;
+    font-weight: 900;
     font-size: 15vw;
-    color: #b086b4;
+    color: #277685;
     text-shadow: 0 0 10px #010101, 0 0 20px #000000;
 }
 
@@ -35,11 +37,47 @@ main{
     flex: 0 15vw;
 }
 
-main > nav{
-    flex: 1;
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    display: flex;
+    backdrop-filter: none;
+    padding: 0rem 0;
+    justify-content: center;
 }
 
-header > .navbar{
+.nav-links {
+    list-style: none;
     display: flex;
+    gap: 1rem;
     flex-direction: row;
+    padding: 0;
+    align-items: center;
+    width: auto;
 }
+
+
+.nav-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem 1rem;
+    background: rgba(64, 78, 91, 0.1);
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    height: 5vh;
+
+}
+
+.nav-links a:hover {
+    background: #183937;
+    color: #000000;
+    transform: scale(1.05);
+
+}
+
