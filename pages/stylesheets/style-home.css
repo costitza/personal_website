@@ -11,11 +11,12 @@ body{
     height: 100vh;
     background: linear-gradient(135deg, #000000, #243b6b, #3b2954);
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     color: white;
     position: relative;
-    padding-top: 2rem;
+    flex-direction: column;
+    row-gap: 15vh;
 }
 
 header > .mainbox{
@@ -38,7 +39,7 @@ main{
 }
 
 .navbar {
-    position: absolute;
+    position: relative;
     top: 0;
     width: 100%;
     display: flex;
@@ -89,7 +90,7 @@ main{
     animation: 
     typing 6s steps(30, end) infinite,
     blink-caret 1s infinite;
-    font-size: 15vh;
+    font-size: 5vw;
     letter-spacing: 0.05em;
 }
 
@@ -107,3 +108,13 @@ main{
   from, to { border-color: transparent }
   50% { border-color: rgb(41, 201, 215); }
 }
+
+@media (max-width: 600px) {
+  .fullname h1 {
+    white-space: nowrap
+  }
+  .container {
+    flex-direction: column;
+  }
+}
+
