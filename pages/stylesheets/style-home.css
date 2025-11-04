@@ -2,21 +2,21 @@ body{
     display: flex;
     margin: 0;
     flex-direction: column;
-    background-color: aqua;
     min-height: 100vh;
     font-family: Lucida Sans Typewriter,Lucida Console,monaco,Bitstream Vera Sans Mono,monospace;
+    background: linear-gradient(135deg, #000000, #243b6b, #3b2954)
 }
 
 .site-header {
     height: 100vh;
-    background: linear-gradient(135deg, #000000, #243b6b, #3b2954);
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     color: white;
     position: relative;
     flex-direction: column;
-    row-gap: 5rem;
+    max-height: fit-content;
+    padding-bottom: 15vh;
 }
 
 header > .mainbox{
@@ -84,23 +84,36 @@ main{
 
 }
 
+.mainbox{
+    margin-top: 15vh;
+}
+
 .fullname h1{
     overflow: hidden; /* Ensures the content is not revealed until the animation */
     white-space: nowrap; /* Keeps the content on a single line */
-    margin-right: 0;
-    margin-left: auto; /* Gives that scrolling effect as the typing happens */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    padding: 0;
+    display: inline-block;
     animation: 
-    typing 6s steps(30, end) infinite;
-    font-size: 5rem;
+    typing 6s steps(30, end) infinite,
+    blink-caret 1s infinite;
     letter-spacing: 0.05em;
-    min-width: 0;
+    width: 0;
 }
 
-.cursor {
-    border-right: 0.15em solid rgb(41, 201, 215);
-    width: 0%;
-    height: 50%;
-    animation: blink-caret 1s infinite;
+.contentbox h2{
+    justify-self: center;
+}
+
+.contentbox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contentbox p{
+    text-align: center;
 }
 
 /* The typing effect */
@@ -119,17 +132,18 @@ main{
 }
 
 @media (max-width: 600px) {
-  .fullname h1 {
+.site-header{
+    font-size: 3vw;
+    height: 50vh;
+}
+.mainbox{
+    margin-top: 5rem;
+}
+.fullname h1 {
     white-space: nowrap;
-    font-size: 7vw;
-  }
-  .site-header {
-    padding-left: 5vw;
-    align-items: start;
-  }
-  body{
-    font-size: 4vw;
-  }
-
+}
+.container {
+    flex-direction: column;
+}
 }
 
