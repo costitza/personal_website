@@ -1,148 +1,17 @@
+@import "header.css";
+@import "animations.css";
+@import "main.css";
+@import "media-query.css";
+
 body{
     display: flex;
     margin: 0;
     flex-direction: column;
     min-height: 100vh;
-    font-family: Lucida Sans Typewriter,Lucida Console,monaco,Bitstream Vera Sans Mono,monospace;
-    background: linear-gradient(135deg, #000000, #243b6b, #3b2954)
-}
-
-.site-header {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    position: relative;
-    flex-direction: column;
-    max-height: fit-content;
-    padding-bottom: 15vh;
-}
-
-header > .mainbox{
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    line-height: 1;
-}
-
-.lastname, .firstname {
-    margin: 0;
-    font-weight: 900;
-    font-size: 15vw;
-    color: #277685;
-    text-shadow: 0 0 10px #010101, 0 0 20px #000000;
-}
-
-main{
-    flex: 0 15vw;
-}
-
-.navbar {
-    position: relative;
-    top: 0;
-    width: 100%;
-    display: flex;
-    backdrop-filter: none;
-    padding: 0rem 0;
-    justify-content: center;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    flex-direction: row;
-    padding: 0;
-    align-items: center;
-    width: auto;
-}
-
-
-.nav-links a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0rem 1rem;
-    background: rgba(64, 78, 91, 0.1);
-    border-radius: 10px;
     color: #ffffff;
-    font-weight: 400;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    height: 5vh;
-
-}
-
-.nav-links a:hover {
-    background: #183937;
-    color: #000000;
-    transform: scale(1.05);
-
-}
-
-.mainbox{
-    margin-top: 15vh;
-}
-
-.fullname h1{
-    overflow: hidden; /* Ensures the content is not revealed until the animation */
-    border-right: .15em solid rgb(41, 201, 215); /* The typwriter cursor */
-    white-space: nowrap; /* Keeps the content on a single line */
-    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-    padding: 0;
-    display: inline-block;
-    animation: 
-    typing 6s steps(30, end) infinite,
-    blink-caret 1s infinite;
-    letter-spacing: 0.05em;
-    width: 0;
-}
-
-.contentbox h2{
-    justify-self: center;
-}
-
-.contentbox{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    font-family: Lucida Sans Typewriter,Lucida Console,monaco,Bitstream Vera Sans Mono,monospace;
+    background: linear-gradient(135deg, #000000, #243b6b, #000000);
     align-items: center;
 }
 
-.contentbox p{
-    text-align: center;
-}
-
-/* The typing effect */
-@keyframes typing {
-  0% { width: 0}
-  30% { width: 100% }
-  70% { width: 100% }
-  80% { width: 0 }
-  100% { width: 0}
-}
-
-/* The typewriter cursor effect */
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: rgb(41, 201, 215); }
-}
-
-@media (max-width: 600px) {
-.site-header{
-    font-size: 3vw;
-    height: 50vh;
-}
-.mainbox{
-    margin-top: 5rem;
-}
-.fullname h1 {
-    white-space: nowrap;
-}
-.container {
-    flex-direction: column;
-}
-}
 

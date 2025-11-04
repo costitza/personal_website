@@ -1,0 +1,18 @@
+@media (max-width: 600px) {
+.site-header{
+    font-size: 3vw;
+    height: 50vh;
+}
+.mainbox{
+    margin-top: 5rem;
+}
+.fullname h1 {
+    white-space: nowrap;
+}
+.container {
+    flex-direction: column;
+}
+.projects{
+    flex-direction: column;
+}
+}
