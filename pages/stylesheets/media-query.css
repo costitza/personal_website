@@ -15,4 +15,12 @@
 .projects{
     flex-direction: column;
 }
+.project-container{
+    width: 50vw;
+}
+.main-container{
+    padding: 1em;
+    max-width: 80vw;
+    align-items: center;
+}
 }
