@@ -5,12 +5,12 @@ const projects = [
     {
         title: "Quest",
         description: "Inovative robotics project made from scratch, trying to combine a drone with a rover",
-        link: "projects/portfolio.html"
+        link: "projects/quest.html"
     },
     {
         title: "Udraw",
         description: "drawing application written in C# using Windows Forms and SQL database to store drawings",
-        link: "projects/weather.html"
+        link: "projects/udraw.html"
     },
 ];
 
