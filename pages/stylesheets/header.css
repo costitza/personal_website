@@ -3,10 +3,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
     flex-direction: column;
     max-height: fit-content;
-    padding-bottom: 10vh;
+    padding-bottom: 10em;
 }
 
 header > .mainbox{
@@ -32,6 +31,7 @@ header > .mainbox{
     backdrop-filter: none;
     padding: 0rem 0;
     justify-content: center;
+    border-radius: 10px;
 }
 
 .nav-links {
@@ -39,9 +39,14 @@ header > .mainbox{
     display: flex;
     gap: 1rem;
     flex-direction: row;
-    padding: 0;
+    padding: 0.8rem 2rem;
     align-items: center;
-    width: auto;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+
 }
 
 
@@ -49,15 +54,15 @@ header > .mainbox{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0rem 1rem;
-    background: rgba(64, 78, 91, 0.1);
-    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
     color: #ffffff;
     font-weight: 400;
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    height: 5vh;
+    background: transparent;
+    transition: all 0.3s ease;
 
 }
 
@@ -73,10 +78,10 @@ header > .mainbox{
 }
 
 .fullname h1{
-    overflow: hidden; /* Ensures the content is not revealed until the animation */
-    border-right: .15em solid rgb(41, 201, 215); /* The typwriter cursor */
-    white-space: nowrap; /* Keeps the content on a single line */
-    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    overflow: hidden; 
+    border-right: .15em solid rgb(41, 201, 215);
+    white-space: nowrap;
+    margin: 0 auto;
     padding: 0;
     display: inline-block;
     animation: 
