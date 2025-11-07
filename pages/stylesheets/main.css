@@ -15,19 +15,29 @@ main{
     width: inherit;
 }
 
-.projects-container{
+.projects-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    width: auto;
-    gap: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
 }
 
-.project-box{
-    background-color: azure;
-    width: auto;
-    height: 15vh;
-    border-radius: 10px;
+.project-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    text-align: center;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
+
+.project-box:hover {
+    transform: scale(1.05);
+    background: rgba(41, 201, 215, 0.2);
+}
+
 
 svg{
     width: 3em;
