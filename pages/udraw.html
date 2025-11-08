@@ -17,47 +17,221 @@
 
     <!-- MAIN CONTENT -->
     <main class="main-container">
-        <!-- HEADER SECTION -->
         <div class="project-header">
-        <h1>uDraw</h1>
-        <p>A short, catchy one-line description of your project.</p>
+            <h1>uDraw</h1>
+            <p>C# WinForms Drawing App with SQL Storage</p>
         </div>
 
         <section class="section">
-            <h2>Overview</h2>
+            <h2>overview</h2>
             <p>
-                This project was created to demonstrate my skills in front-end and back-end web development.
-                It includes responsive design, interactive UI elements, and dynamic data handling.
+            <strong>uDraw</strong> is a personal project built in <strong>C# (WinForms)</strong> to explore the intersection 
+            of GUI development, graphics rendering, and SQL database management.  
+            The goal: create a simple desktop drawing environment that can <strong>save drawings into an SQL Server database</strong> 
+            and later <strong>load them back</strong> as editable canvases.
             </p>
         </section>
 
         <section class="section">
-            <h2>Key Features</h2>
+            <h2>application structure</h2>
+            <pre><code class="language-text">
+uDraw/
+├── Forms/
+│   ├── MainForm.cs
+│   ├── SaveForm.cs
+│   └── LoadForm.cs
+├── Components/
+│   └── PaintingCanvas.cs
+├── Database/
+│   ├── DatabaseHelper.cs
+│   └── DatabaseConfig.cs
+├── Properties/
+└── Program.cs
+            </code></pre>
+            <p>
+            The app follows a clean separation of concerns:
+            <br>• <strong>UI Layer</strong> → Forms for user interaction  
+            • <strong>Graphics Layer</strong> → Canvas rendering  
+            • <strong>Persistence Layer</strong> → SQL Server CRUD operations
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>drawing logic</h2>
+            <p>
+            The <code>PaintingCanvas</code> control is the core of uDraw.  
+            It captures mouse input, renders strokes, and maintains a <code>Bitmap</code> buffer to avoid flicker.
+            </p>
+
+            <pre><code class="language-csharp">
+// PaintingCanvas.cs
+public class PaintingCanvas : Panel
+{
+    private bool isDrawing = false;
+    private Point lastPoint;
+    private Bitmap canvas;
+
+    public PaintingCanvas()
+    {
+        this.DoubleBuffered = true;
+        canvas = new Bitmap(800, 600);
+        this.MouseDown += OnMouseDown;
+        this.MouseMove += OnMouseMove;
+        this.MouseUp += OnMouseUp;
+    }
+
+    private void OnMouseDown(object sender, MouseEventArgs e)
+    {
+        isDrawing = true;
+        lastPoint = e.Location;
+    }
+
+    private void OnMouseMove(object sender, MouseEventArgs e)
+    {
+        if (!isDrawing) return;
+        using (Graphics g = Graphics.FromImage(canvas))
+        {
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.DrawLine(new Pen(Color.DeepSkyBlue, 2), lastPoint, e.Location);
+        }
+        lastPoint = e.Location;
+        Invalidate();
+    }
+
+    private void OnMouseUp(object sender, MouseEventArgs e)
+    {
+        isDrawing = false;
+    }
+
+    protected override void OnPaint(PaintEventArgs e)
+    {
+        e.Graphics.DrawImageUnscaled(canvas, 0, 0);
+    }
+}
+            </code></pre>
+        </section>
+
+        <section class="section">
+            <h2>database integration</h2>
+            <p>
+            Each drawing is stored in SQL Server as a <code>VARBINARY(MAX)</code> column.  
+            The <code>DatabaseHelper</code> handles serialization and CRUD operations.
+            </p>
+
+            <pre><code class="language-csharp">
+// DatabaseHelper.cs
+public static void SaveDrawing(string name, Bitmap bmp)
+{
+    using (SqlConnection conn = new SqlConnection(DatabaseConfig.ConnectionString))
+    {
+        conn.Open();
+        using (MemoryStream ms = new MemoryStream())
+        {
+            bmp.Save(ms, ImageFormat.Png);
+            byte[] data = ms.ToArray();
+
+            string q = "INSERT INTO Drawings (Name, ImageData, CreatedAt) VALUES (@n, @d, GETDATE())";
+            using (SqlCommand cmd = new SqlCommand(q, conn))
+            {
+                cmd.Parameters.AddWithValue("@n", name);
+                cmd.Parameters.Add("@d", SqlDbType.VarBinary).Value = data;
+                cmd.ExecuteNonQuery();
+            }
+        }
+    }
+}
+    </code></pre>
+
+    <p>Retrieving the drawing:</p>
+    <pre><code class="language-csharp">
+// DatabaseHelper.cs
+public static Bitmap LoadDrawing(string name)
+{
+    using (SqlConnection conn = new SqlConnection(DatabaseConfig.ConnectionString))
+    {
+        conn.Open();
+        string q = "SELECT ImageData FROM Drawings WHERE Name = @n";
+        using (SqlCommand cmd = new SqlCommand(q, conn))
+        {
+            cmd.Parameters.AddWithValue("@n", name);
+            var imgData = (byte[])cmd.ExecuteScalar();
+            if (imgData == null) return null;
+
+            using (MemoryStream ms = new MemoryStream(imgData))
+                return new Bitmap(ms);
+        }
+    }
+}
+            </code></pre>
+        </section>
+
+        <section class="section">
+            <h2>SQL Schema</h2>
+            <p>The database schema is simple and optimized for binary image storage:</p>
+            <pre><code class="language-sql">
+CREATE TABLE Drawings (
+    Id INT IDENTITY PRIMARY KEY,
+    Name NVARCHAR(100) NOT NULL,
+    ImageData VARBINARY(MAX) NOT NULL,
+    CreatedAt DATETIME DEFAULT GETDATE()
+);
+            </code></pre>
+        </section>
+
+        <section class="section">
+            <h2>configuration</h2>
+            <pre><code class="language-csharp">
+// DatabaseConfig.cs
+public static class DatabaseConfig
+{
+    public static string ConnectionString =
+        "Server=localhost;Database=uDrawDB;Trusted_Connection=True;";
+}
+            </code></pre>
+            <p>
+            The configuration file allows switching between local or remote SQL servers easily.
+            Error handling ensures the app doesn’t crash if the database is unavailable.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>technical stack</h2>
             <ul>
-                <li>Fully responsive design for all devices</li>
-                <li>Clean, modern glassmorphism style</li>
-                <li>Interactive components with JavaScript</li>
-                <li>Reusable modular structure</li>
+            <li><strong>Language:</strong> C# (.NET Framework 4.8)</li>
+            <li><strong>UI Framework:</strong> Windows Forms</li>
+            <li><strong>Database:</strong> Microsoft SQL Server</li>
+            <li><strong>Libraries:</strong> System.Data.SqlClient, System.Drawing</li>
+            <li><strong>IDE:</strong> Visual Studio 2022</li>
             </ul>
         </section>
 
-        <!-- TECHNOLOGIES SECTION -->
         <section class="section">
-        <h2>Technologies Used</h2>
-        <ul>
-            <li>HTML5, CSS3 (Flexbox + Grid + Animations)</li>
-            <li>Vanilla JavaScript</li>
-            <li>Git & GitHub for version control</li>
-        </ul>
+            <h2>future work</h2>
+            <ul>
+            <li>Add multiple layers and brush styles.</li>
+            <li>Integrate cloud save (Azure Blob Storage or Firebase).</li>
+            <li>Implement undo/redo stack and drawing history.</li>
+            <li>Refactor UI using WPF for modern rendering.</li>
+            </ul>
         </section>
 
-        <!-- DEMO & CODE LINKS -->
         <section class="section">
-        <h2>Explore More</h2>
-        <a href="https://your-demo-link.com" target="_blank" class="button">Live Demo</a>
-        <a href="https://github.com/yourusername/project-repo" target="_blank" class="button">Source Code</a>
+            <h2>conclusion</h2>
+            <p>
+            <strong>uDraw</strong> shows that even small WinForms apps can be full-stack.  
+            From <code>Graphics</code> rendering to <code>SQL persistence</code>, it encapsulates key desktop software concepts —
+            responsiveness, data management, and a clean modular codebase.
+            </p>
         </section>
-    </main>
+
+        <section class="section">
+            <h2>explore more</h2>
+            <a href="https://github.com/costitza/udraw" target="_blank" class="button">View on GitHub</a>
+        </section>
+        </main>
+
+
+
 
     <!-- FOOTER -->
     <div data-include="../pages/components/footer.html"></div>
