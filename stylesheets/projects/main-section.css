@@ -1,5 +1,6 @@
 .main-container{
     gap: 2em;
+    width: 60vw;
 }
 
 .project-header {

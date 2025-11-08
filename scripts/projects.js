@@ -4,7 +4,7 @@
 const projects = [
     {
         title: "Quest",
-        description: "Inovative robotics project made from scratch, trying to combine a drone with a rover",
+        description: "inovative robotics project made from scratch, trying to combine a drone with a rover",
         link: "quest.html"
     },
     {

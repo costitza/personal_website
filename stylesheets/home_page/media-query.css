@@ -8,6 +8,7 @@
 }
 .fullname h1 {
     white-space: nowrap;
+    font-size: auto;
 }
 .container {
     flex-direction: column;
@@ -20,8 +21,9 @@
 }
 .main-container{
     padding: 1em;
-    width: 80vw;
+    width: 90vw;
     align-items: center;
+    height: fit-content;
 }
 .projects-container{
     grid-template-columns: repeat(1, 1fr);
@@ -38,6 +40,9 @@
     .nav-links a {
         font-size: 1rem;
         padding: 0.4rem 0.8rem;
+    }
+    .main-container{
+        width: 55vw;
     }
 }
 
