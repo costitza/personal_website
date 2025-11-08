@@ -1,7 +1,7 @@
 .site-header {
     height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     max-height: fit-content;
@@ -29,9 +29,11 @@ header > .mainbox{
     width: 100%;
     display: flex;
     backdrop-filter: none;
-    padding: 0rem 0;
+    padding: 0.8rem 1rem;
     justify-content: center;
+    align-items: center;
     border-radius: 10px;
+    z-index: 100;
 }
 
 .nav-links {
@@ -49,6 +51,11 @@ header > .mainbox{
 
 }
 
+.nav-links li{
+    display: flex;
+    justify-content: center;
+    align-items: center;        
+}
 
 .nav-links a {
     display: flex;
@@ -56,7 +63,8 @@ header > .mainbox{
     align-items: center;
     padding: 0.5rem 1rem;
     border-radius: 8px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    white-space: nowrap;
     color: #ffffff;
     font-weight: 400;
     text-decoration: none;
