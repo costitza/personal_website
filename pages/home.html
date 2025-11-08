@@ -11,15 +11,7 @@
 
 <body>
     <header class="site-header">
-        <nav class="navbar">
-            <ul class="nav-links">
-                <li><a href="home.html">home</a></li>
-                <li><a href="#about">about</a></li>
-                <li><a href="#projects">projects</a></li>
-                <li><a href="#skills">skills</a></li>
-                <li><a href="#contact">contact</a></li>
-            </ul>
-        </nav>
+        <div data-include="../pages/components/navbar.html"></div>
 
         <div class="mainbox">
             <div class="fullname">
@@ -95,11 +87,10 @@
         </section>
     </main>
 
-    <footer>
-        Contact: Raul :-)
-    </footer>
+    <div data-include="../pages/components/footer.html"></div>
 
     <!--<script src="scripts/header.js" defer></script>-->
     <script src="../scripts/projects.js"></script>
+    <script src="../scripts/include_components.js"></script>
 </body>
 </html>
