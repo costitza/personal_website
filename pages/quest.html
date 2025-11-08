@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Ababei Raul">
+    <meta name="description" content="Personal website about me and my work">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ababei Raul | Personal Website</title>
+    
+    <!-- Main Project Page Styles -->
+    <link rel="stylesheet" href="../../stylesheets/projects/style-projects.css">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <div data-include="../pages/components/navbar.html"></div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-container">
+        <div class="project-header">
+            <h1>Quest – a hybrid rescue robot</h1>
+            <p>A multifunctional ground and aerial robot designed for real-world rescue missions.</p>
+        </div>
+
+        <div class="project-image">
+            <img src="../../resources/rover.jpeg" alt="Quest rescue robot image">
+        </div>
+
+        <section class="section">
+            <h2>introduction</h2>
+            <p>
+            <strong>Quest</strong> is a multifunctional rescue robot designed to operate efficiently in critical and hard-to-reach environments. 
+            Developed by <strong>Raul-Costin Ababei</strong> and <strong>Alexandru-Lucian Motoașcă</strong> at 
+            <em>Colegiul Național de Informatică “Grigore Moisil” Brașov</em>, this project combines ground mobility and aerial versatility 
+            to assist in emergency missions such as locating missing persons, exploring caves, or supporting firefighting operations.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>motivation</h2>
+            <p>
+            The idea behind Quest emerged from a real need for innovative tools that can save lives in extreme situations. 
+            Traditional rescue missions are often delayed or limited by terrain and safety constraints. 
+            Quest was imagined as a machine capable of overcoming these obstacles — a robot that can both 
+            <strong>drive on four wheels</strong> and <strong>take flight</strong>, reaching areas where human access is dangerous or impossible.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>capabilities & usefulness</h2>
+            <p>Quest operates in two main modes:</p>
+            <ul>
+            <li><strong>Rover mode:</strong> Moves on wheels, consumes minimal energy, and can transport small medical kits such as bandages or food to people trapped in hazardous zones.</li>
+            <li><strong>Drone mode:</strong> With a simple command, Quest extends its arms and transforms into a quadcopter, capable of scanning large areas from above. It can detect heat sources, locate survivors, and transmit live video data to emergency teams.</li>
+            </ul>
+            <p>
+            Equipped with a <strong>high-resolution camera</strong>, <strong>AI-based object detection</strong>, and 
+            <strong>real-time image transmission</strong>, Quest provides an intelligent and adaptive solution for both monitoring and active intervention.
+            </p>
+        </section>
+
+        <div class="project-image">
+            <img src="../../resources/drone.jpeg" alt="Quest rescue robot image">
+        </div>
+
+        <section class="section">
+            <h2>design and structure</h2>
+            <p>
+            Mechanically, Quest is an elegant fusion of robotics and aeronautics. 
+            Its frame is 3D-printed using <strong>PETG</strong> and <strong>PETG-CF</strong>, ensuring strength without excessive weight.
+            </p>
+            <ul>
+            <li>Each leg integrates two servo motors for articulation.</li>
+            <li>Each wheel assembly includes a DC motor and a brushless motor with propeller for flight.</li>
+            <li>Magnetic supports reduce strain on servos and stabilize the robot even when unpowered.</li>
+            <li>The centrally placed battery ensures balance and easy replacement.</li>
+            </ul>
+        </section>
+
+        <div class="project-image">
+            <img src="../../resources/side-view.jpeg" alt="Quest rescue robot image">
+        </div>
+
+        <section class="section">
+            <h2>electronics and control</h2>
+            <p>The electronic system integrates multiple components for stability and intelligence:</p>
+            <ul>
+            <li><strong>Raspberry Pi 4B</strong> – main controller managing overall coordination and communication.</li>
+            <li><strong>Arduino Mega</strong> – controls servo and DC motors.</li>
+            <li><strong>Pixhawk 2.4.8</strong> – handles flight stabilization and telemetry.</li>
+            <li><strong>OAK-D Lite</strong> – provides real-time vision with object detection using YOLOv8 nano.</li>
+            </ul>
+            <p>
+            The power system uses multiple voltage converters to safely supply all modules, while serial and UART communication links 
+            keep sensors, motors, and processors synchronized.
+            </p>
+        </section>
+
+        <div class="project-image">
+            <img src="../../resources/electronica.jpeg" alt="Quest rescue robot image">
+        </div>
+
+        <section class="section">
+            <h2>Software and AI</h2>
+            <ul>
+            <li>A <strong>Flask</strong>-based backend hosted on Raspberry Pi for communication and data routing.</li>
+            <li><strong>Socket.io</strong> for real-time video and telemetry streaming.</li>
+            <li>Integration with <strong>YOLOv8n</strong> on OAK-D Lite for object and human detection.</li>
+            <li>A <strong>React-based web interface</strong> hosted on Firebase, accessible through a secure <strong>ngrok</strong> tunnel.</li>
+            <li>Custom Arduino firmware managing low-level control and safety fallbacks.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Future Development</h2>
+            <p>Quest continues to evolve with potential improvements such as:</p>
+            <ul>
+            <li>Higher-capacity batteries for extended missions.</li>
+            <li>Integration of gas and thermal sensors for hazardous environments.</li>
+            <li>Machine learning for autonomous navigation and improved object recognition.</li>
+            <li>Collaborative multi-robot communication for large-scale search missions.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Conclusion</h2>
+            <p>
+            Quest represents a fusion of creativity, engineering, and purpose — a machine built not just to demonstrate technical ability, 
+            but to <strong>save lives</strong>. Through the combination of robotics, AI, and intelligent control systems, 
+            Quest pushes the boundaries of what small-scale autonomous systems can achieve in emergency response.
+            </p>
+        </section>
+    </main>
+
+
+    <!-- FOOTER -->
+    <div data-include="../pages/components/footer.html"></div>
+
+    <script src="../../scripts/include_components.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+.main-container{
+    gap: 2em;
+}
+
+.project-header {
+    text-align: center;
+    max-width: 900px;
+}
+
+.project-header h1 {
+    font-size: clamp(2rem, 4vw, 4rem);
+    color: rgb(41, 201, 215);
+    text-shadow: 0 0 10px #010101, 0 0 20px #000000;
+    margin-bottom: 0.5rem;
+}
+
+.project-header p {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    opacity: 0.9;
+}
+
+/* IMAGE */
+.project-image {
+    width: inherit;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-image img {
+    width: 70%;
+    max-width: 70vw;
+    max-height: 70vh;
+    height: auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    border-radius: 15px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.project-image img:hover{
+    background: rgb(41, 201, 215);
+    color: #000000;
+    transform: scale(1.05);
+}
+
+/* SECTIONS */
+.section {
+    width: inherit;
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+}
+
+
+.section h2 {
+    color: rgb(41, 201, 215);
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    margin-bottom: 1rem;
+}
+
+.section p, 
+.section ul {
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+.section ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+}
+
+/* BUTTONS */
+a.button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.8rem 1.5rem;
+    background: rgb(41, 201, 215);
+    color: #000;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a.button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(41, 201, 215, 0.4);
+}
