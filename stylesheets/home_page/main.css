@@ -57,4 +57,14 @@ svg{
 a{
     text-decoration: none;
     color: rgb(41, 201, 215);
+    transition: color 0.3s ease;
+}
+
+a:hover{
+    color: white;
+}
+
+.gmail-icon{
+    width: 3rem;
+    height: 2.5rem;
 }
