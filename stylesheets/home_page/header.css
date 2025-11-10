@@ -70,7 +70,6 @@ header > .mainbox{
     text-decoration: none;
     transition: all 0.3s ease;
     background: transparent;
-    transition: all 0.3s ease;
 
 }
 
@@ -112,4 +111,80 @@ header > .mainbox{
     text-align: center;
     padding: 5em;
     padding-top: 2em;
+}
+
+
+.dropdown {
+    position: relative;
+}
+
+/* butonul care activează meniul */
+.dropdown-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 400;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: Lucida Sans Typewriter,Lucida Console,monaco,Bitstream Vera Sans Mono,monospace;
+}
+
+.dropdown-btn:hover,
+.dropdown:focus-within .dropdown-btn {
+    background: rgb(41, 201, 215);
+    color: #000;
+    transform: scale(1.05);
+}
+
+/* dropdown ascuns inițial */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    flex-direction: column;
+    align-items: center;
+    background: rgba(56, 60, 71, 0.8);
+    backdrop-filter: blur(50px);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    padding: 0.8rem 1rem;
+    margin-top: 0.5rem;
+    list-style: none;
+    gap: 0.5rem;
+    min-width: 160px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 200;
+}
+
+/* activare automată când dropdownul e focusat */
+.dropdown:focus-within .dropdown-menu {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* linkuri din dropdown */
+.dropdown-menu li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.6rem;
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+    background: rgb(41, 201, 215);
+    color: #000;
+    transform: scale(1.05);
 }
