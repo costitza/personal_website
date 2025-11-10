@@ -8,7 +8,6 @@
 }
 .fullname h1 {
     white-space: nowrap;
-    font-size: auto;
 }
 .container {
     flex-direction: column;

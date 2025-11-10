@@ -113,6 +113,12 @@ a:hover{
     background: rgba(41, 201, 215, 0.2);
 }
 
+.skills-grid .skill-card:nth-child(even):hover {
+    background: rgba(39, 118, 133, 0.9); /* un albastru mai închis */
+    color: #fff;
+}
+
+
 .skill-card a {
     display: flex;
     justify-content: center;
