@@ -15,13 +15,13 @@ header > .mainbox{
     line-height: 1;
 }
 
-.lastname, .firstname {
+/*.lastname, .firstname {
     margin: 0;
     font-weight: 900;
     font-size: 20vw;
     color: #277685;
     text-shadow: 0 0 10px #010101, 0 0 20px #000000;
-}
+}*/
 
 .navbar {
     position: relative;
@@ -139,7 +139,6 @@ header > .mainbox{
     transform: scale(1.05);
 }
 
-/* dropdown ascuns inițial */
 .dropdown-menu {
     display: none;
     position: absolute;
@@ -163,7 +162,7 @@ header > .mainbox{
     z-index: 200;
 }
 
-/* activare automată când dropdownul e focusat */
+
 .dropdown:focus-within .dropdown-menu {
     display: flex;
     opacity: 1;
@@ -171,7 +170,7 @@ header > .mainbox{
     transform: translateX(-50%) translateY(0);
 }
 
-/* linkuri din dropdown */
+
 .dropdown-menu li a {
     display: flex;
     justify-content: center;

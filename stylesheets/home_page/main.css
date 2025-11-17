@@ -69,10 +69,6 @@ a:hover{
     height: 2.5rem;
 }
 
-/* =============================== */
-/*        Skills Section           */
-/* =============================== */
-
 .skills-grid {
     display: flex;
     flex-wrap: wrap;
@@ -82,17 +78,17 @@ a:hover{
     width: 100%;
 }
 
-/* Cardurile sunt acum dimensionate relativ la viewport */
+
 .skill-card {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
     border-radius: 1.5vw;
     padding: 1vw;
-    width: 10vw;           /* 12% din lățimea ecranului */
-    height: 5vh;           /* 8% din înălțimea ecranului */
-    min-width: 110px;      /* prevenim carduri prea mici */
+    width: 10vw;           
+    height: 5vh;           
+    min-width: 110px;      
     min-height: 80px;
-    max-width: 200px;      /* limităm mărimea pe ecrane uriașe */
+    max-width: 200px;      
     max-height: 150px;
     display: flex;
     justify-content: center;
@@ -114,7 +110,7 @@ a:hover{
 }
 
 .skills-grid .skill-card:nth-child(even):hover {
-    background: rgba(39, 118, 133, 0.9); /* un albastru mai închis */
+    background: rgba(39, 118, 133, 0.9);
     color: #fff;
 }
 

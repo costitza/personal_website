@@ -1,4 +1,4 @@
-/* The typing effect */
+
 @keyframes typing {
   0% { width: 0}
   30% { width: 100% }
@@ -7,7 +7,7 @@
   100% { width: 0}
 }
 
-/* The typewriter cursor effect */
+/* cursor blink */
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: rgb(41, 201, 215); }
