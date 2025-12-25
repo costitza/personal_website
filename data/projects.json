@@ -3,12 +3,20 @@
         "title": "Quest",
         "category": "Robotics",
         "description": "Innovative robotics project combining a drone with a rover.",
-        "link": "quest.html"
+        "link": "quest.html",
+        "published": true
     },
     {
         "title": "Udraw",
         "category": "Software",
         "description": "C# WinForms Drawing App with SQL Storage.",
-        "link": "udraw.html"
+        "link": "udraw.html",
+        "published": true
+    },
+    {
+        "title": "Secret AI Project",
+        "description": "A work in progress neural network...",
+        "link": "#",
+        "published": false 
     }
 ]
