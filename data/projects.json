@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Quest",
+        "category": "Robotics",
+        "description": "Innovative robotics project combining a drone with a rover.",
+        "link": "quest.html"
+    },
+    {
+        "title": "Udraw",
+        "category": "Software",
+        "description": "C# WinForms Drawing App with SQL Storage.",
+        "link": "udraw.html"
+    }
+]
