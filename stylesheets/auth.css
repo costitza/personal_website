@@ -1,0 +1,97 @@
+/* Stiluri pentru butonul din Footer */
+.login-trigger-btn {
+    margin-top: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.login-trigger-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.login-trigger-btn.logged-in {
+    background: #ff4d4d;
+    border-color: #ff4d4d;
+    color: white;
+}
+
+.login-trigger-btn.logged-in:hover {
+    background: #e60000;
+}
+
+/* Stiluri pentru Fereastra Modală */
+.auth-modal {
+    display: none; /* Ascuns implicit */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(56, 60, 71, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    width: 300px;
+    max-width: 90vw;
+}
+
+.auth-modal h3 {
+    color: rgb(41, 201, 215);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.auth-input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    margin-bottom: 15px;
+    box-sizing: border-box; /* Asigură că padding-ul nu strică lățimea */
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.auth-btn-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.auth-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.auth-btn:hover {
+    transform: scale(1.05);
+}
+
+.auth-btn-confirm {
+    background: rgb(41, 201, 215);
+    color: #000;
+}
+
+.auth-btn-cancel {
+    background: #ff4d4d;
+    color: white;
+}
+
+.auth-msg {
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    margin-top: 15px;
+    min-height: 1.2em; /* Rezervă spațiu ca să nu sară layout-ul */
+}
