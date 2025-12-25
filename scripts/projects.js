@@ -2,7 +2,6 @@ let projects = [];
 const container = document.querySelector(".projects-container");
 
 // 1. HELPER: Check if current user is Admin
-// Reads the session created by your auth.js script
 function isAdmin() {
     try {
         const session = JSON.parse(localStorage.getItem("userSession"));
