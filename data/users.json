@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "email": "ababeiraul13@gmail.com",
+    "role": "admin",
+    "name": "Raul"
+  },
+  {
+    "id": 2,
+    "email": "teacher@uni.ro",
+    "role": "guest",
+    "name": "Profesor"
+  }
+]
