@@ -1,13 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // --- 1. CONFIGURARE ---
     const USERS_URL = '../data/users.json'; 
     const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
 
-    // --- 2. CREARE MODAL (Doar structură HTML și clase) ---
+    // Create modal for login
     const modalContainer = document.createElement("div");
     modalContainer.id = "loginModal";
-    modalContainer.classList.add("auth-modal"); // Adaugă clasa CSS definită
+    modalContainer.classList.add("auth-modal");
 
     modalContainer.innerHTML = `
         <h3>Authentication</h3>
@@ -21,22 +19,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.body.appendChild(modalContainer);
 
-    // --- 3. EVENT DELEGATION ---
+    // Auth button click
     document.addEventListener("click", (e) => {
-        // Verificăm dacă elementul clickuit are clasa noastră (sau ID-ul)
         if (e.target && e.target.id === "authBtn") {
             handleAuthClick();
         }
     });
 
     document.getElementById("cancelLogin").addEventListener("click", () => {
-        modalContainer.style.display = "none"; // Singurul stil inline rămas (toggle)
+        modalContainer.style.display = "none";
         document.getElementById("loginMsg").innerText = ""; 
     });
 
     document.getElementById("confirmLogin").addEventListener("click", attemptLogin);
 
-    // --- 4. LOGICĂ ---
     function handleAuthClick() {
         if (localStorage.getItem("userSession")) {
             logout();
@@ -88,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("You have been logged out.");
     }
 
-    // --- 5. UI UPDATER ---
+    // Update login/logout button
     function updateUI() {
         const btn = document.getElementById("authBtn");
         if (!btn) return;
@@ -97,18 +93,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (session) {
             btn.innerText = `Logout (${session.name})`;
-            btn.classList.add("logged-in"); // Folosim clasă pentru stilul de logout
+            btn.classList.add("logged-in");
         } else {
             btn.innerText = "Admin Login";
             btn.classList.remove("logged-in");
         }
     }
 
-    // Interval pentru a găsi butonul din Footer
+    // Wait for footer button to appear
     const checkFooterInterval = setInterval(() => {
         const btn = document.getElementById("authBtn");
         if (btn) {
-            // Adăugăm clasa de bază butonului când este găsit
             btn.classList.add("login-trigger-btn");
             updateUI();
             clearInterval(checkFooterInterval); 
