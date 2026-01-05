@@ -18,5 +18,12 @@
         "description": "A work in progress neural network...",
         "link": "#",
         "published": false 
+    },
+    {
+        "title": "AutoMounterShell",
+        "category": "Software",
+        "description": "A shell wrapper for Linux where you can mount and unmount drives without commands.",
+        "link": "amsh.html",
+        "published": true
     }
 ]

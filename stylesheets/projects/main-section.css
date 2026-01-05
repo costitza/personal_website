@@ -113,3 +113,25 @@ code {
 .language-sql { color: #8be9fd; }
 .language-csharp { color: #9aedfe; }
 
+.ascii-wrapper {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    border-radius: 15px;
+    width: fit-content;
+    margin: 0 auto 2rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ascii-wrapper .ascii-art {
+    background: transparent;
+    box-shadow: none;
+    margin: 0;
+    margin-top: 0; 
+    padding: 0;
+    color: rgb(41, 201, 215);
+    font-size: clamp(0.6rem, 1vw, 1rem); 
+    border-radius: 0;
+}
+

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Ababei Raul">
+    <meta name="description" content="Personal website about me and my work">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ababei Raul | Personal Website</title>
+    
+    <link rel="stylesheet" href="../../stylesheets/projects/style-projects.css">
+</head>
+
+<body>
+    <div data-include="../pages/components/navbar.html"></div>
+
+    <main class="main-container">
+        <div class="project-header">
+            <h1>AMSH</h1>
+            <p>Auto Mount Shell - A Smart Linux Shell Wrapper</p>
+        </div>
+
+        <div class="project-image ascii-wrapper">
+            <pre class="ascii-art">
+╔═════════════════════════════════════════════╗
+║                                             ║
+║          AUTO MOUNT SHELL (AMSH)            ║
+║            ITBI – Proiect 2025              ║
+║       By Ababei Raul & Iosub Dragos         ║
+║                                             ║
+╚═════════════════════════════════════════════╝
+            </pre>
+        </div>
+
+        <section class="section">
+            <h2>overview</h2>
+            <p>
+            <strong>AMSH (Auto Mount Shell)</strong> is a custom command-line interpreter designed for Linux systems to automate the management of storage devices. 
+            Developed in collaboration with <strong>Iosub Dragoș-Casian</strong>, this project focuses on efficiency and resource management by handling the 
+            mounting and unmounting of file systems automatically based on user activity.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>key features</h2>
+            <p>AMSH enhances the standard shell experience with intelligent background processes:</p>
+            <ul>
+                <li><strong>Smart Auto-Mounting:</strong> Automatically detects when a user navigates (`cd`) to a mountpoint or accesses files within it, mounting the device instantly.</li>
+                <li><strong>TTL (Time To Live) Management:</strong> Monitors inactivity and automatically unmounts devices after a configurable period to save resources and ensure safety.</li>
+                <li><strong>Desktop Notifications:</strong> Integrates with `notify-send` to alert the user in the GUI when devices are mounted or unmounted.</li>
+                <li><strong>Custom TUI:</strong> Features a stylized ASCII interface, colored prompts showing the current user and path, and formatted history tables.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>configuration</h2>
+            <p>
+            The system is highly configurable via the <code>amsh.conf</code> file, allowing users to define specific TTLs (in minutes) and file system types for different devices.
+            </p>
+
+            <pre><code class="language-text">
+# DEVICE            MOUNTPOINT                FS_TYPE   TTL
+/tmp/disk.img       /tmp/amsh_mnt             ext4      1
+/dev/sdb1           /mnt/usb                  vfat      5
+/tmp/secret.img     /tmp/amsh_secret          ext4      2
+            </code></pre>
+        </section>
+
+        <section class="section">
+            <h2>technical architecture</h2>
+            <p>
+            The project is built entirely in <strong>Bash</strong> and leverages core Linux utilities. It handles signal trapping (SIGINT) 
+            to prevent accidental closures and uses `fuser` to ensure devices aren't unmounted while in use.
+            </p>
+            <p>The codebase is modularized into specific components:</p>
+            <ul>
+                <li><code>amsh.sh</code>: The main shell loop and command processor.</li>
+                <li><code>mount_manager.sh</code>: Logic for mounting, unmounting, and TTL verification.</li>
+                <li><code>style.sh</code>: Handles the TUI elements, colors, and banner generation.</li>
+                <li><code>setup_demo.sh</code>: A utility script that creates virtual disk images to test the functionality without physical hardware.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>logic snippet</h2>
+            <p>
+            Below is a snippet from the <code>mount_manager.sh</code> showing how the system checks for expired TTLs using file timestamps.
+            </p>
+            <pre><code class="language-bash">
+# Check time & unmount
+check_and_umount_expired() {
+    if [[ ! -f "$CONFIG_FILE" ]]; then return; fi
+
+    while read -r device mpoint fstype ttl; do
+        local ttl_file="$TTL_DIR/${mpoint//\//_}.last_access"
+        
+        # Check if active mountpoint
+        if [[ -f "$ttl_file" ]] && mountpoint -q "$mpoint"; then
+            local last_access=$(stat -c %Y "$ttl_file")
+            local current_time=$(date +%s)
+            local diff=$(( (current_time - last_access) / 60 ))
+
+            # Check expiration & active processes
+            if [ "$diff" -ge "$ttl" ]; then
+                if ! fuser -s "$mpoint" 2>/dev/null; then
+                    echo "[SYSTEM] TTL expirat. Demontare: $mpoint"
+                    sudo umount "$mpoint"
+                    rm "$ttl_file"
+                fi
+            fi
+        fi
+    done < "$CONFIG_FILE"
+}
+            </code></pre>
+        </section>
+
+        <section class="section">
+            <h2>conclusion</h2>
+            <p>
+            AMSH serves as a powerful demonstration of shell scripting capabilities, process management, and Linux system administration automation. 
+            It transforms the tedious task of manual mounting into a seamless, background operation.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>explore more</h2>
+            <a href="https://github.com/costitza/amsh_itbi" target="_blank" class="button">View on GitHub</a>
+        </section>
+    </main>
+
+
+    <div data-include="../pages/components/footer.html"></div>
+
+    <script src="../../scripts/include_components.js"></script>
+
+</body>
+</html>
