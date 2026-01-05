@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Ababei Raul">
+    <meta name="description" content="Personal website about me and my work">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ababei Raul | Personal Website</title>
+    
+    <link rel="stylesheet" href="../../stylesheets/projects/style-projects.css">
+</head>
+
+<body>
+    <div data-include="../pages/components/navbar.html"></div>
+
+    <main class="main-container">
+        <div class="project-header">
+            <h1>.flux</h1>
+            <p>An AI-first engineering intelligence dashboard that gives your code a voice.</p>
+        </div>
+
+        <div class="project-image">
+            <img src="../resources/dotflux_landing.png" alt=".flux dashboard interface">
+        </div>
+
+        <section class="section">
+            <h2>introduction</h2>
+            <p>
+            <strong>.flux</strong> is an engineering intelligence platform designed to centralize the fragmented context of software development. 
+            Created by me and <strong>Tisca Catalin</strong> during the <strong>"AI Thinkerers" Hackathon</strong> in Bucharest 
+            (organized by ElevenLabs), this project secured <strong>4th place</strong> in the local competition.
+            </p>
+            <p>
+            The platform ingests signals from GitHub repositories, pull requests, and voice meetings into a unified <strong>Convex</strong> database, 
+            allowing AI agents to analyze the "pulse" of an engineering team.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>the problem & solution</h2>
+            <p>
+            Engineering context is often scattered across code, chat logs, and call notes. AI agents typically act blindly without access to this historical data.
+            </p>
+            <p>
+            <strong>.flux</strong> solves this by creating a "God mode" context layer. It captures:
+            </p>
+            <ul>
+            <li><strong>Code Metadata:</strong> PRs, commits, and file changes via GitHub.</li>
+            <li><strong>Human Context:</strong> Voice calls and architectural decisions via ElevenLabs.</li>
+            <li><strong>Team Dynamics:</strong> Contributor roles and seniority inferred from code complexity.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>agentic workflow</h2>
+            <p>
+            Unlike simple CI/CD scripts, .flux employs autonomous agents to reason about the data:
+            </p>
+            <ul>
+            <li><strong>The Analyst (PRAnalyzer):</strong> Proactively monitors PRs to assess risk levels (Low to Critical) and impact radius without human intervention.</li>
+            <li><strong>The Profiler (ContributorProfiler):</strong> Analyzes commit history to infer if a contributor is a "Frontend Junior" or "Backend Lead".</li>
+            <li><strong>The Scribe (Meeting Listener):</strong> Uses <strong>ElevenLabs Scribe v1</strong> to Transcribe engineering calls and extract actionable TODOs linked to specific files.</li>
+            </ul>
+        </section>
+
+
+        <section class="section">
+            <h2>voice intelligence</h2>
+            <p>
+            The crown jewel of the project is the <strong>RepoAssistant Agent</strong>. It allows engineers to literally "talk" to their codebase.
+            Using <strong>ElevenLabs Multilingual v2</strong> for speech-out and the <strong>Vercel AI SDK</strong> for orchestration, 
+            users can ask questions like <em>"What is the risk level of the last 3 PRs?"</em> or <em>"Who owns the payment infrastructure?"</em> 
+            and receive a spoken, context-aware answer.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>technical implementation</h2>
+            <p>
+            The project utilizes a modern, real-time stack to support agentic behavior. 
+            Here is a snippet showing how we handle text-to-speech generation in the API:
+            </p>
+
+            <pre><code class="language-typescript">
+// api/speak/route.ts
+const { audio } = await generateSpeech({
+  model: elevenlabs.speech(modelId),
+  text,
+});
+
+const arrayBuffer = audio.uint8Array.buffer as ArrayBuffer;
+const blob = new Blob([arrayBuffer], { type: "audio/mpeg" });
+
+return new Response(blob, {
+  status: 200,
+  headers: { "Content-Type": "audio/mpeg" },
+});
+            </code></pre>
+        </section>
+
+        <section class="section">
+            <h2>tech stack</h2>
+            <ul>
+            <li><strong>Frontend:</strong> Next.js 16 (App Dir), React 19, Tailwind CSS v4, Shadcn UI.</li>
+            <li><strong>Backend & DB:</strong> Convex (Real-time database and scheduled functions).</li>
+            <li><strong>AI & Agents:</strong> Vercel AI SDK, OpenAI, ElevenLabs (STT & TTS).</li>
+            <li><strong>Auth & Tools:</strong> Clerk Authentication, Octokit (GitHub API).</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>conclusion</h2>
+            <p>
+            <strong>.flux</strong> moves beyond static dashboards. By combining deep code analysis with voice intelligence, 
+            it creates a living, breathing interface for software engineering teams. It transforms raw metadata into 
+            actionable insights, bridging the gap between what the code says and what the team intends.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>explore more</h2>
+            <a href="https://github.com/costitza/dotflox" target="_blank" class="button">View on Github</a>
+        </section>
+    </main>
+
+    <div data-include="../pages/components/footer.html"></div>
+
+    <script src="../../scripts/include_components.js"></script>
+    <script src="../../scripts/interactive.js"></script>
+
+</body>
+</html>

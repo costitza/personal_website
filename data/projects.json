@@ -25,5 +25,12 @@
         "description": "A shell wrapper for Linux where you can mount and unmount drives without commands.",
         "link": "amsh.html",
         "published": true
+    },
+    {
+        "title": ".flux",
+        "category": "Software",
+        "description": "An AI-first engineering intelligence dashboard that gives your code a voice.",
+        "link": "dotflux.html",
+        "published": true
     }
 ]
